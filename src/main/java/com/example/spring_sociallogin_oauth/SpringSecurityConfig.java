@@ -58,8 +58,8 @@ public class SpringSecurityConfig {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/","/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
-//                .antMatchers("/api/v1/**").hasRole((Role.USER.getTitle()))
+                .antMatchers("/login","/css/**","/static/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
+                .antMatchers("/api/v1/**").hasRole((Role.USER.getTitle()))
                 .anyRequest().permitAll();
         return http.build();
     }

@@ -4,6 +4,7 @@ import com.example.spring_sociallogin_oauth.Provider;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,10 +16,12 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @Entity
+@Setter
 public class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @Column(nullable = false)
