@@ -25,6 +25,16 @@ public class UserService {
     }
 
     @Transactional
+    public int delete(long id) {
+        Optional<User> oUser = userRepository.findById(id);
+        if(oUser.isPresent()) {
+            userRepository.delete(oUser.get());
+            return 1;
+        }
+        return 0;
+    }
+
+    @Transactional
     public int patch(long id, User updateUser) {
         //setter사용하면 안좋을거 같은데 방법 찾기
         Optional<User> oUser = userRepository.findById(id);

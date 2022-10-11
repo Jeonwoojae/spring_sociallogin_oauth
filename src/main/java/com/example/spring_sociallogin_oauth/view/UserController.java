@@ -20,6 +20,18 @@ public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
 
+    @DeleteMapping("/{id}")
+    public Map<String, Object> delete(@PathVariable("id") long id) {
+        Map<String, Object> response = new HashMap<>();
+        if(userService.delete(id) > 0) {
+            response.put("result","SUCCESS");
+        } else {
+            response.put("result","FAIL");
+            response.put("reason","일치하는 회원정보가 없습니다.");
+        }
+        return response;
+    }
+
     @PatchMapping("/{id}")
     public Map<String, Object> patch(@PathVariable("id") long id, @RequestBody User updateUser){
         Map<String, Object> response = new HashMap<>();
